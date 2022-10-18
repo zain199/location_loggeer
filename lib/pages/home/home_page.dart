@@ -1,10 +1,8 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:location_logger/theme/config.dart';
-
-import '../dashboard/dashboard.dart';
+import '../accomudations/accomudations.dart';
+import '../schedules/schedules.dart';
 import 'component/profile_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,10 +18,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
         children: [
-          Dashboard(),
+          Schedules(),
+          Accommodation(),
           Profile(),
         ],
       ),
@@ -34,6 +35,11 @@ class _HomePageState extends State<HomePage> {
         animationDuration: const Duration(milliseconds: 200),
         height: 45.0,
         items:const  [
+          Icon(
+            Icons.schedule_outlined,
+            size: 30.0,
+            color: Colors.black54,
+          ),
           Icon(
            Icons.home_outlined,
             size: 30.0,

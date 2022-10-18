@@ -39,7 +39,6 @@ dependencies:
   get: ^4.6.5
   fluttertoast: ^8.0.9
   dio: ^4.0.6
-  image_picker: ^0.8.5+3
   file_picker: ^5.2.0+1
   firebase_storage: ^10.3.9
   flutter_svg: ^1.1.5
@@ -48,11 +47,25 @@ dependencies:
   i18n_extension: ^4.0.0
   velocity_x: ^3.3.0
   curved_navigation_bar: ^1.0.3
+  flutter_native_splash: ^2.2.11
+  dotted_line: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/splash.png
+
+  android_12:
+    color: "#ffffff"
+    image: assets/splash.png
+
+  ios: true
+
+  web: false
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -72,8 +85,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+   - assets/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

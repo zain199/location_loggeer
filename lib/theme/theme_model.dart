@@ -25,9 +25,31 @@ class ThemeModel {
       ),
       actionsIconTheme: const IconThemeData(color: Colors.white),
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
+      bodyText1: TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 12, color: Colors.black),
+      bodyText2: TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 14, color: Colors.black),
+
+
       subtitle1: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 16, color: Colors.grey[900]),
+          fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
+      subtitle2: TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
+
+      headline1: TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 20, color: Colors.black),
+      headline2: TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 22, color: Colors.black),
+      headline3: TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 24, color: Colors.black),
+      headline4: TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 26, color: Colors.black),
+      headline5: TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 28, color: Colors.black),
+      headline6: TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 30, color: Colors.black),
+
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Config().appaccentColor,
