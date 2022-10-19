@@ -28,7 +28,7 @@ class _SchedulesState extends State<Schedules> {
               children: [
                 Text(
                   'Location Logger',
-                  style: GoogleFonts.akayaTelivigala(
+                  style: GoogleFonts.abel(
                       fontSize: 26, fontWeight: FontWeight.bold),
                 ),
                 const Spacer(),

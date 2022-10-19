@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:location_logger/theme/color.dart';
 
 import 'config.dart';
@@ -25,30 +26,30 @@ class ThemeModel {
       ),
       actionsIconTheme: const IconThemeData(color: Colors.white),
     ),
-    textTheme: const TextTheme(
+    textTheme:  TextTheme(
       bodyText1: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 12, color: Colors.black),
+           fontSize: 12, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
       bodyText2: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 14, color: Colors.black),
+           fontSize: 14, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
 
 
       subtitle1: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
+           fontSize: 16, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
       subtitle2: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
+           fontSize: 18, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
 
       headline1: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 20, color: Colors.black),
+           fontSize: 20, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
       headline2: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 22, color: Colors.black),
+           fontSize: 22, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
       headline3: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 24, color: Colors.black),
+           fontSize: 24, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
       headline4: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 26, color: Colors.black),
+           fontSize: 26, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
       headline5: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 28, color: Colors.black),
+           fontSize: 28, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
       headline6: TextStyle(
-          fontWeight: FontWeight.w500, fontSize: 30, color: Colors.black),
+           fontSize: 30, color: Colors.black,fontFamily: GoogleFonts.abel().fontFamily),
 
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -80,28 +81,28 @@ class ThemeModel {
       ),
       textTheme: const TextTheme(
         bodyText1: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 12, color: Colors.black),
+             fontSize: 12, color: Colors.black),
         bodyText2: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 14, color: Colors.black),
+             fontSize: 14, color: Colors.black),
 
 
         subtitle1: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
+             fontSize: 16, color: Colors.black),
         subtitle2: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
+             fontSize: 18, color: Colors.black),
 
         headline1: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 20, color: Colors.black),
+             fontSize: 20, color: Colors.black),
         headline2: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 22, color: Colors.black),
+             fontSize: 22, color: Colors.black),
         headline3: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 24, color: Colors.black),
+             fontSize: 24, color: Colors.black),
         headline4: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 26, color: Colors.black),
+             fontSize: 26, color: Colors.black),
         headline5: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 28, color: Colors.black),
+             fontSize: 28, color: Colors.black),
         headline6: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 30, color: Colors.black),
+             fontSize: 30, color: Colors.black),
 
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(

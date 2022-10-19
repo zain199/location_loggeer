@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:location_logger/theme/color.dart';
 import 'package:location_logger/theme/config.dart';
 
@@ -46,7 +47,7 @@ class MenuItem2 extends StatelessWidget {
 
             Icon(ic ,color: Config().appColor, ),
             const SizedBox(width: 10,),
-            (title!.text.gray600.lg.bold.make()).expand(),
+            (title!.text.fontFamily(GoogleFonts.abel().fontFamily!).gray600.lg.bold.make()).expand(),
           ],
         ),
       ),

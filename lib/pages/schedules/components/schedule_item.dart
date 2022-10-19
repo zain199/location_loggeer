@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:location_logger/common/helper_methods.dart';
 
@@ -19,7 +20,12 @@ class ScheduleItem extends StatelessWidget {
       margin: EdgeInsets.all(8),
 
       decoration: BoxDecoration(
-
+          boxShadow: [BoxShadow(
+            color: Colors.grey,
+            blurRadius: 5,
+            spreadRadius: 1,
+            offset: Offset(0, 3)
+          )],
           color: Colors.white, borderRadius: BorderRadius.circular(16)),
       child: Row(
         children: [
@@ -74,16 +80,22 @@ class ScheduleItem extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'This is a Title',
-                  style: Get.theme.textTheme.headline2,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'This is a Title',
+                      style: Get.theme.textTheme.headline1!.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      DateFormat('dd MMM , yyyy').format(DateTime.now()).toString(),
+                      style: Get.theme.textTheme.caption!.copyWith(fontSize: 14,fontFamily: GoogleFonts.abel().fontFamily),
+                    ),
+                  ],
                 ),
-                Text(
-                  DateFormat('dd MMM , yyyy').format(DateTime.now()).toString(),
-                  style: Get.theme.textTheme.caption!.copyWith(fontSize: 16),
-                ),
-                SizedBox(height: 10,),
+
                 Row(
                   children: [
                     Column(
@@ -178,19 +190,24 @@ class ScheduleItem extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  width: Get.width*.45,
+                  width: Get.width*.55,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ElevatedButton(onPressed: (){}, child: Text('Entry',style: TextStyle(color: Colors.white),),style: ElevatedButton.styleFrom(
-                        backgroundColor: colors[colorIndex],
+                      Expanded(
+                        child: ElevatedButton(onPressed: (){}, child: Text('Entry',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
+                          backgroundColor: colors[colorIndex],
 
 
-                      ),),
-                      ElevatedButton(onPressed: (){}, child: Text('Exit',style: TextStyle(color: Colors.white),),style: ElevatedButton.styleFrom(
-                        backgroundColor: colors[colorIndex],
-                      ),),
+                        ),),
+                      ),
+                      SizedBox(width: 10,),
+                      Expanded(
+                        child: ElevatedButton(onPressed: (){}, child: Text('Exit',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
+                          backgroundColor: colors[colorIndex],
+                        ),),
+                      ),
                     ],
                   ),
                 )

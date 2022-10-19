@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:i18n_extension/default.i18n.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -40,7 +41,7 @@ class Profile extends StatelessWidget {
                   Text('User Name' , style: Get.theme.textTheme.headline6,),
                   //email
                   //model.currentUser.email.text.light.make(),
-                  Text('example@gmail.com', style: Get.theme.textTheme.caption!.copyWith(fontSize: 16),),
+                  Text('example@gmail.com', style: Get.theme.textTheme.caption!.copyWith(fontSize: 16,fontFamily: GoogleFonts.abel().fontFamily),),
 
                   const SizedBox(width: double.infinity,height: 14,),
 

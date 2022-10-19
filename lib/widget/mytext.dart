@@ -29,7 +29,7 @@ class MyText extends StatelessWidget {
       textAlign: textalign,
       overflow: TextOverflow.ellipsis,
       maxLines: maxline,
-      style: GoogleFonts.inter(
+      style: GoogleFonts.abel(
           fontSize: size,
           fontStyle: fontstyle,
           color: colors,
