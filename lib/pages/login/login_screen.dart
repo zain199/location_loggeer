@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:location_logger/controllers/auth_controller.dart';
 import 'package:location_logger/theme/color.dart';
 import 'package:location_logger/widget/mytext.dart';
 
@@ -87,24 +88,33 @@ class Login extends StatelessWidget {
                   SizedBox(
                     height: 60,
                     width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        if(formKey.currentState!.validate()){
-                          Get.to(HomePage());
-                        }
-                      },
+                    child: GetBuilder<AuthController>(
+                      init: AuthController(),
+                      builder: (controller) {
+                        return ElevatedButton(
+                          onPressed: () async {
+                            if(formKey.currentState!.validate()){
+                             bool success= await controller.login(email: userNameController.text.trim(), password: passController.text.trim());
+                              if(success)
+                                {
+                                  Get.to(HomePage());
+                                }
+                            }
+                          },
 
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        backgroundColor: Config().appColor,
-                      ),
-                      child: Text(
-                        "Login",
-                        style: Get.theme.textTheme.subtitle1!
-                            .copyWith(color: white, fontSize: 20),
-                      ),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            backgroundColor: Config().appColor,
+                          ),
+                          child: Text(
+                            "Login",
+                            style: Get.theme.textTheme.subtitle1!
+                                .copyWith(color: white, fontSize: 20),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   SizedBox(

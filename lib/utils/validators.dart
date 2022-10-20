@@ -5,7 +5,7 @@ class Validators {
   static final RegExp regExpEmail = RegExp(
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
   static final RegExp regExpPw = RegExp(
-      r'^(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+      r'^(?=.*?[a-z])(?=.*?[0-9]).{4,}$');
   static final RegExp regexImage = RegExp(
       r"(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)");
   static final RegExp regExpPhone = RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)');
