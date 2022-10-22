@@ -1,6 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:location_logger/controllers/accommodation_controller.dart';
+import 'package:location_logger/controllers/auth_controller.dart';
+import 'package:location_logger/models/accommodation_model.dart';
 
 import '../../Theme/config.dart';
 
@@ -15,101 +19,155 @@ class Accommodation extends StatefulWidget {
 
 class _AccommodationState extends State<Accommodation> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      AccommodationController controller = Get.put(AccommodationController());
+      controller.getUserAccommodation();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 100,
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          width: double.maxFinite,
-          color: Config().appaccentColor,
-          child: SafeArea(
-            child: Row(
-              children: [
-                Text(
-                  'Location Logger',
-                  style: GoogleFonts.akayaTelivigala(
-                      fontSize: 26, fontWeight: FontWeight.bold),
-                ),
-                const Spacer(),
-                const CircleAvatar(
-                  radius: 20,
-                  backgroundImage: NetworkImage(
-                      'https://i.pinimg.com/736x/0d/cf/b5/0dcfb548989afdf22afff75e2a46a508.jpg'),
-                )
-              ],
-            ),
-          ),
+
+    AuthController authController = Get.find<AuthController>();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Accommodation',
+          style: GoogleFonts.abel(
+              fontSize: 26, fontWeight: FontWeight.bold),
         ),
-        Expanded(
-          child: ListView(
-            padding: EdgeInsets.all(8),
-            children: List.generate(
-                5,
-                    (index) =>Container(
-                      padding: EdgeInsets.all(16),
+        backgroundColor: Config().appaccentColor,
+      ),
+
+      body: Column(
+       // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: 20,),
+          GetBuilder<AccommodationController>(
+            init: AccommodationController(),
+            builder: (controller) {
+              return controller.userAccommodation != null
+                  ? Container(
+                      height: 200,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
                       margin: EdgeInsets.all(5),
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          Container(
 
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Building Name',style: Get.theme.textTheme.caption,),
-                                  Text('Cairo Tower in Tahrir',style: Get.theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w600)),
-                                ],
-                              ),
+                              child :Column(
 
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Floor No.',style: Get.theme.textTheme.caption,),
-                                  Text('Number 14',style: Get.theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w600)),
-                                ],
-                              ),
-                            ],
+                              //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(
+                                  'Location Name',
+                                  style: Get.theme.textTheme.caption!
+                                      .copyWith(fontWeight: FontWeight.w500,),
+                                ),
+                                SizedBox(width: Get.width,),
+                                Text(controller.userAccommodation!.location??'El Tahrir',
+                                    style: Get.theme.textTheme.subtitle2!
+                                        .copyWith(fontWeight: FontWeight.w600,color: Colors.white)),
+                              ],
+                            ),
+                            color: Config().appColor,
+                            height: 50,
+                            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                           ),
-                          Divider(
-                            color: Colors.grey,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          SizedBox(height: 5,),
+                         Container(
+                           padding: EdgeInsets.all(16),
+                           child:  Column(
+                             children: [
 
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Caretaker Name',style: Get.theme.textTheme.caption,),
-                                  Text('Omar Ali',style: Get.theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w600)),
-                                ],
-                              ),
+                               Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                 children: [
 
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Caretaker No.',style: Get.theme.textTheme.caption,),
-                                  Text('Number 250',style: Get.theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w600)),
-                                ],
-                              ),
-                            ],
-                          )
+                                   Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: [
+                                       Text(
+                                         'Building No.',
+                                         style: Get.theme.textTheme.caption,
+                                       ),
+                                       Text(controller.userAccommodation!.buildingNo??'Cairo Tower',
+                                           style: Get.theme.textTheme.subtitle1!
+                                               .copyWith(fontWeight: FontWeight.w500)),
+                                     ],
+                                   ),
+                                   Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: [
+                                       Text(
+                                         'Floor No.',
+                                         style: Get.theme.textTheme.caption,
+                                       ),
+                                       Text(controller.userAccommodation!.flatNo??'Number 14',
+                                           style: Get.theme.textTheme.subtitle1!
+                                               .copyWith(fontWeight: FontWeight.w500)),
+                                     ],
+                                   ),
+                                 ],
+                               ),
+                               Divider(
+                                 color: Colors.grey,
+                               ),
+                               Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                 children: [
+                                   Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: [
+                                       Text(
+                                         'Care taker Name',
+                                         style: Get.theme.textTheme.caption,
+                                       ),
+                                       Text(controller.userAccommodation!.careTakerName??'Omar Ali',
+                                           style: Get.theme.textTheme.subtitle1!
+                                               .copyWith(fontWeight: FontWeight.w500)),
+                                     ],
+                                   ),
+                                   Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: [
+                                       Text(
+                                         'Care taker Contact No.',
+                                         style: Get.theme.textTheme.caption,
+                                       ),
+                                       Text(controller.userAccommodation!.careTakerContactNo??'250',
+                                           style: Get.theme.textTheme.subtitle1!
+                                               .copyWith(fontWeight: FontWeight.w500)),
+                                     ],
+                                   ),
+                                 ],
+                               )
+                             ],
+                           ),
+                         )
                         ],
                       ),
                       decoration: BoxDecoration(
-                          boxShadow: [BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 5,
-                              spreadRadius: 1,
-                              offset: Offset(0, 3)
-                          )],
-                          color: Colors.white, borderRadius: BorderRadius.circular(16)),
-                    ),),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(.3),
+                                blurRadius: 7,
+                                spreadRadius: 1,
+                                offset: Offset(0, 5))
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16)),
+                    )
+                  : Expanded(
+                      child: Center(
+                      child: Text('There is no Accommodation For You'),
+                    ));
+            },
           ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }

@@ -9,11 +9,32 @@ import '../../utils/validators.dart';
 import '../../widget/customTextField.dart';
 import '../home/home_page.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   GlobalKey<FormState> formKey = GlobalKey();
+
   TextEditingController userNameController = TextEditingController();
+
   TextEditingController passController = TextEditingController();
+
   bool _isObscure = true;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp)async {
+      AuthController controller = Get.put(AuthController());
+      bool success = await controller.tryAutoLogin();
+      if(success)
+        {
+          Get.offAll(HomePage());
+        }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +118,7 @@ class Login extends StatelessWidget {
                              bool success= await controller.login(email: userNameController.text.trim(), password: passController.text.trim());
                               if(success)
                                 {
-                                  Get.to(HomePage());
+                                  Get.offAll(HomePage());
                                 }
                             }
                           },

@@ -3,7 +3,7 @@ import 'package:location_logger/Theme/config.dart';
 
 import '../main.dart';
 
-void showLoading({Color? loadingColor})
+void showLoading({Color? loadingColor, String? msg})
 {
   showDialog<String>(
     barrierDismissible: false,
@@ -17,9 +17,26 @@ void showLoading({Color? loadingColor})
         child:  AlertDialog(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          content: Center(
-            child: CircularProgressIndicator(
-              color: Config().appaccentColor,
+          content: Container(
+            //width: 80,
+            height: 120,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16)
+
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: CircularProgressIndicator(
+                    color: Config().appaccentColor,
+                  ),
+                ),
+                SizedBox(height: 10,),
+                if(msg!=null)
+                Text(msg,style: TextStyle(fontWeight: FontWeight.bold),)
+              ],
             ),
           ),
         ),

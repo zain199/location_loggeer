@@ -16,40 +16,37 @@ class Schedules extends StatefulWidget {
 class _SchedulesState extends State<Schedules> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 100,
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          width: double.maxFinite,
-          color: Config().appaccentColor,
-          child: SafeArea(
-            child: Row(
-              children: [
-                Text(
-                  'Location Logger',
-                  style: GoogleFonts.abel(
-                      fontSize: 26, fontWeight: FontWeight.bold),
-                ),
-                const Spacer(),
-                const CircleAvatar(
-                  radius: 20,
-                  backgroundImage: NetworkImage(
-                      'https://i.pinimg.com/736x/0d/cf/b5/0dcfb548989afdf22afff75e2a46a508.jpg'),
-                )
-              ],
-            ),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Schedules',
+          style: GoogleFonts.abel(
+              fontSize: 26, fontWeight: FontWeight.bold),
         ),
-        Expanded(
-          child: ListView(
-            padding: EdgeInsets.all(8),
-            children: List.generate(
-                5,
-                (index) => ScheduleItem()),
-          ),
-        )
-      ],
+        backgroundColor: Config().appaccentColor,
+        actions: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: const CircleAvatar(
+                      radius: 20,
+                      backgroundImage: NetworkImage(
+                          'https://i.pinimg.com/736x/0d/cf/b5/0dcfb548989afdf22afff75e2a46a508.jpg'),
+                    ),
+                  )
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.all(8),
+              children: List.generate(
+                  5,
+                  (index) => ScheduleItem()),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

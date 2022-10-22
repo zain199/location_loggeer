@@ -19,17 +19,21 @@ final storage = GetStorage();
 List? user ;
 
 String? email() {
-  return  GetStorage().read('email').toString();
+  return  GetStorage().read('email');
 }
 String customerOrSupplierName='';
 List<String> currentBrand=[];
 
 String? password() {
-  return GetStorage().read('password').toString();
+  return GetStorage().read('password');
 }
 
-String? getToken() {
-  return GetStorage().read('token').toString();
+Map<String,dynamic>? getUser() {
+  return GetStorage().read('user');
+}
+
+Map<String,dynamic>? getUserId() {
+  return GetStorage().read('userid');
 }
 
 void showErrorToast(String msg){

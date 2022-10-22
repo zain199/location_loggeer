@@ -19,12 +19,15 @@ class GetConnectHelper {
   static Future<Response> getData(
       {
         required String path,
-        Map<String, String>? query,
+        Map<String, dynamic>? query,
         bool? isEmailAndPasswordRequired,
 
       }) async {
 
-    return await connect.get(baseUrl+path, contentType: 'application/x-www-form-urlencoded',headers: query,);
+    debugMessage(baseUrl+path);
+    debugMessage(query.toString());
+
+    return await connect.get(baseUrl+path, query: query);
   }
 
   // static Future<Response> setData(
