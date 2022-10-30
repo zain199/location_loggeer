@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:location_logger/controllers/schedules_controller.dart';
 import 'package:location_logger/pages/schedules/components/schedule_item.dart';
 
 import '../../theme/config.dart';
@@ -38,11 +39,16 @@ class _SchedulesState extends State<Schedules> {
       body: Column(
         children: [
           Expanded(
-            child: ListView(
-              padding: EdgeInsets.all(8),
-              children: List.generate(
-                  5,
-                  (index) => ScheduleItem()),
+            child: GetBuilder<SchedulesController>(
+              init: SchedulesController()..getUserSchedules(),
+              builder: (controller) {
+                return controller.schedulesList.isNotEmpty?ListView(
+                  padding: EdgeInsets.all(8),
+                  children: List.generate(
+                      controller.schedulesList.length,
+                          (index) => ScheduleItem(scheduleModel: controller.schedulesList[index],)),
+                ):Center(child: Text('There are No Schedules For You'),);
+              },
             ),
           )
         ],

@@ -4,11 +4,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:location_logger/common/helper_methods.dart';
+import 'package:location_logger/models/schedule_model.dart';
 
 import '../../../Theme/config.dart';
 
 class ScheduleItem extends StatelessWidget {
-  const ScheduleItem({Key? key}) : super(key: key);
+  final ScheduleModel scheduleModel;
+  const ScheduleItem({Key? key,required this.scheduleModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class ScheduleItem extends StatelessWidget {
                   children: [
                     Text('Start Time', style: Get.theme.textTheme.caption),
                     Text(
-                        DateFormat('hh:mm a').format(DateTime.now()).toString(),
+                        scheduleModel.startTime??'12:00',
                         style: Get.theme.textTheme.subtitle1)
                   ],
                 ),
@@ -62,7 +64,7 @@ class ScheduleItem extends StatelessWidget {
                   children: [
                     Text('End Time', style: Get.theme.textTheme.caption),
                     Text(
-                        DateFormat('hh:mm a').format(DateTime.now()).toString(),
+                        scheduleModel.endTime??'12:00',
                         style: Get.theme.textTheme.subtitle1)
                   ],
                 ),
@@ -86,11 +88,11 @@ class ScheduleItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'This is a Title',
+                      scheduleModel.stadium??'This is a Title',
                       style: Get.theme.textTheme.headline1!.copyWith(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      DateFormat('dd MMM , yyyy').format(DateTime.now()).toString(),
+                      scheduleModel.date??DateFormat('dd MMM , yyyy').format(DateTime.now()).toString(),
                       style: Get.theme.textTheme.caption!.copyWith(fontSize: 14,fontFamily: GoogleFonts.abel().fontFamily),
                     ),
                   ],
@@ -98,87 +100,87 @@ class ScheduleItem extends StatelessWidget {
 
                 Row(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(Icons.circle_outlined,size: 8,color: colors[colorIndex],),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 3.0,top: 3,),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 8,
-                                child: DottedLine(
-                                  direction: Axis.vertical,
-                                  lineThickness: 2,
-                                  dashGapLength: 1,
-
-                                  dashColor: colors[colorIndex],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 8,
-                                child: DottedLine(
-                                  direction: Axis.vertical,
-                                  lineThickness: 2,
-                                  dashGapLength: 1,
-
-                                  dashColor: colors[colorIndex],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 8,
-                                child: DottedLine(
-                                  direction: Axis.vertical,
-                                  lineThickness: 2,
-                                  dashGapLength: 1,
-
-                                  dashColor: colors[colorIndex],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 8,
-                                child: DottedLine(
-                                  direction: Axis.vertical,
-                                  lineThickness: 2,
-                                  dashGapLength: 1,
-
-                                  dashColor: colors[colorIndex],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Icon(Icons.circle_outlined,size: 8,color : colors[colorIndex]),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
+                    // Column(
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   children: [
+                    //     Icon(Icons.circle_outlined,size: 8,color: colors[colorIndex],),
+                    //     Padding(
+                    //       padding: const EdgeInsets.only(left: 3.0,top: 3,),
+                    //       child: Column(
+                    //         children: [
+                    //           SizedBox(
+                    //             height: 8,
+                    //             child: DottedLine(
+                    //               direction: Axis.vertical,
+                    //               lineThickness: 2,
+                    //               dashGapLength: 1,
+                    //
+                    //               dashColor: colors[colorIndex],
+                    //             ),
+                    //           ),
+                    //           SizedBox(
+                    //             height: 8,
+                    //             child: DottedLine(
+                    //               direction: Axis.vertical,
+                    //               lineThickness: 2,
+                    //               dashGapLength: 1,
+                    //
+                    //               dashColor: colors[colorIndex],
+                    //             ),
+                    //           ),
+                    //           SizedBox(
+                    //             height: 8,
+                    //             child: DottedLine(
+                    //               direction: Axis.vertical,
+                    //               lineThickness: 2,
+                    //               dashGapLength: 1,
+                    //
+                    //               dashColor: colors[colorIndex],
+                    //             ),
+                    //           ),
+                    //           SizedBox(
+                    //             height: 8,
+                    //             child: DottedLine(
+                    //               direction: Axis.vertical,
+                    //               lineThickness: 2,
+                    //               dashGapLength: 1,
+                    //
+                    //               dashColor: colors[colorIndex],
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //     Icon(Icons.circle_outlined,size: 8,color : colors[colorIndex]),
+                    //   ],
+                    // ),
+                    // SizedBox(
+                    //   width: 5,
+                    // ),
                     Container(
                       width: Get.width*.55,
                       height: 50,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // Expanded(
+                          //   child: Text(
+                          //     'This is a Location name',
+                          //     style: Get.theme.textTheme.subtitle1,
+                          //     maxLines: 1,
+                          //     overflow: TextOverflow.ellipsis,
+                          //   ),
+                          // ),
+                          // Container(
+                          //   height: 1,
+                          //   color: Colors.grey[300],
+                          //   width: Get.width*.45,
+                          //   margin: EdgeInsets.symmetric(vertical: 3,horizontal: 8),
+                          // ),
                           Expanded(
                             child: Text(
-                              'This is a Location name',
-                              style: Get.theme.textTheme.subtitle1,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Container(
-                            height: 1,
-                            color: Colors.grey[300],
-                            width: Get.width*.45,
-                            margin: EdgeInsets.symmetric(vertical: 3,horizontal: 8),
-                          ),
-                          Expanded(
-                            child: Text(
-                              'This is a Location Area',
-                              style: Get.theme.textTheme.subtitle1,
+                              scheduleModel.area??'This is a Location Area',
+                              style: Get.theme.textTheme.headline6,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -196,7 +198,7 @@ class ScheduleItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
-                        child: ElevatedButton(onPressed: (){}, child: Text('Entry',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
+                        child: ElevatedButton(onPressed: (){}, child: Text('Check in',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
                           backgroundColor: colors[colorIndex],
 
 
@@ -204,7 +206,7 @@ class ScheduleItem extends StatelessWidget {
                       ),
                       SizedBox(width: 10,),
                       Expanded(
-                        child: ElevatedButton(onPressed: (){}, child: Text('Exit',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
+                        child: ElevatedButton(onPressed: (){}, child: Text('Check out',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
                           backgroundColor: colors[colorIndex],
                         ),),
                       ),

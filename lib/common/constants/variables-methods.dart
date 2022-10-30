@@ -32,7 +32,7 @@ Map<String,dynamic>? getUser() {
   return GetStorage().read('user');
 }
 
-Map<String,dynamic>? getUserId() {
+String? getUserId() {
   return GetStorage().read('userid');
 }
 

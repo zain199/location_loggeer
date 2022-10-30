@@ -4,8 +4,8 @@ class Config {
   final String appName = 'location logger';
 
   final String doneAsset = 'assets/done.json';
-  final Color appColor =  const Color(0xfff67b01);
-  final Color appaccentColor = const Color(0xfff9e3d5);
+  final Color appColor =  const Color(0xff720a3b);
+  final Color appaccentColor = const Color(0xffe9e9e9);
 
   //Intro images
   final String introImage1 = 'assets/news1.png';
