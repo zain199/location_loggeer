@@ -33,21 +33,21 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         animationDuration: const Duration(milliseconds: 200),
         height: 45.0,
-        items:const  [
+        items:  [
           Icon(
             Icons.schedule_outlined,
             size: 30.0,
-            color: Colors.black54,
+            color:current==0? Colors.white:Colors.black54,
           ),
           Icon(
            Icons.home_outlined,
             size: 30.0,
-            color: Colors.black54,
+            color: current==1? Colors.white:Colors.black54,
           ),
           Icon(
             Icons.person_outline,
             size: 30.0,
-            color: Colors.black54,
+            color:current==2?  Colors.white:Colors.black54,
           ),
         ],
         onTap: (index) {

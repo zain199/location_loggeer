@@ -50,6 +50,7 @@ dependencies:
   flutter_native_splash: ^2.2.11
   dotted_line: ^3.1.0
   cached_network_image: ^3.2.2
+  location: ^4.4.0
 
 dev_dependencies:
   flutter_test:

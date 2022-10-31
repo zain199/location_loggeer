@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:location_logger/common/helper_methods.dart';
+import 'package:location_logger/controllers/schedules_controller.dart';
 import 'package:location_logger/models/schedule_model.dart';
-
-import '../../../Theme/config.dart';
+import 'package:location_logger/utils/constant.dart';
 
 class ScheduleItem extends StatelessWidget {
   final ScheduleModel scheduleModel;
@@ -14,6 +14,7 @@ class ScheduleItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SchedulesController controller = Get.put(SchedulesController());
     int colorIndex = randomNumber();
     return Container(
       // padding: EdgeInsets.v(12),
@@ -163,20 +164,6 @@ class ScheduleItem extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Expanded(
-                          //   child: Text(
-                          //     'This is a Location name',
-                          //     style: Get.theme.textTheme.subtitle1,
-                          //     maxLines: 1,
-                          //     overflow: TextOverflow.ellipsis,
-                          //   ),
-                          // ),
-                          // Container(
-                          //   height: 1,
-                          //   color: Colors.grey[300],
-                          //   width: Get.width*.45,
-                          //   margin: EdgeInsets.symmetric(vertical: 3,horizontal: 8),
-                          // ),
                           Expanded(
                             child: Text(
                               scheduleModel.area??'This is a Location Area',
@@ -198,7 +185,9 @@ class ScheduleItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
-                        child: ElevatedButton(onPressed: (){}, child: Text('Check in',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
+                        child: ElevatedButton(onPressed: isScheduleDateIsToday()?()async{
+                          await controller.checkIn(date: scheduleModel.date!);
+                        }:null, child: Text('Check in',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
                           backgroundColor: colors[colorIndex],
 
 
@@ -206,7 +195,9 @@ class ScheduleItem extends StatelessWidget {
                       ),
                       SizedBox(width: 10,),
                       Expanded(
-                        child: ElevatedButton(onPressed: (){}, child: Text('Check out',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
+                        child: ElevatedButton(onPressed: isScheduleDateIsToday()?()async{
+                          await controller.checkOut(date: scheduleModel.date!);
+                        }:null, child: Text('Check out',style: TextStyle(color: Colors.white,fontFamily: GoogleFonts.abel().fontFamily),),style: ElevatedButton.styleFrom(
                           backgroundColor: colors[colorIndex],
                         ),),
                       ),
@@ -219,5 +210,11 @@ class ScheduleItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  bool isScheduleDateIsToday()
+  {
+    String todayDate = DateFormat('dd-MM-yyyy').format(DateTime.now());
+    return (todayDate == scheduleModel.date);
   }
 }
