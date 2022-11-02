@@ -53,6 +53,7 @@ class SchedulesController extends GetxController {
 
   Future<bool> checkIn({required String date}) async {
     try {
+
       showLoading(msg: 'Loading...');
       LocationData currentLocation = await getMyLocation();
       Response res = await GetConnectHelper.getData(path: attend, query: {

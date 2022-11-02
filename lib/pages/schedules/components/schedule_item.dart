@@ -214,7 +214,7 @@ class ScheduleItem extends StatelessWidget {
 
   bool isScheduleDateIsToday()
   {
-    String todayDate = DateFormat('dd-MM-yyyy').format(DateTime.now());
+    String todayDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
     return (todayDate == scheduleModel.date);
   }
 }
