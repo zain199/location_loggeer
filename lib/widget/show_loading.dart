@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:location_logger/Theme/config.dart';
+import 'package:Dohatana/Theme/config.dart';
 
 import '../main.dart';
 

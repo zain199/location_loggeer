@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:location_logger/common/constants/variables-methods.dart';
-import 'package:location_logger/models/accommodation_model.dart';
-import 'package:location_logger/models/user_model.dart';
-import 'package:location_logger/pages/login/login_screen.dart';
-import 'package:location_logger/utils/constant.dart';
-import 'package:location_logger/widget/show_loading.dart';
+import 'package:Dohatana/common/constants/variables-methods.dart';
+import 'package:Dohatana/models/accommodation_model.dart';
+import 'package:Dohatana/models/user_model.dart';
+import 'package:Dohatana/pages/login/login_screen.dart';
+import 'package:Dohatana/utils/constant.dart';
+import 'package:Dohatana/widget/show_loading.dart';
 
 import '../common/constants/end_points.dart';
 import '../common/helpers/get_connect_helper.dart';

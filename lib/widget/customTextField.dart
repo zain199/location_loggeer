@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:location_logger/theme/color.dart';
+import 'package:Dohatana/theme/color.dart';
 
 class CustomTextField extends StatefulWidget {
   String hint;

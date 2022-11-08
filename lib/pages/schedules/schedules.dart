@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:location_logger/controllers/schedules_controller.dart';
-import 'package:location_logger/pages/schedules/components/schedule_item.dart';
+import 'package:Dohatana/controllers/schedules_controller.dart';
+import 'package:Dohatana/pages/schedules/components/schedule_item.dart';
 
+import '../../common/constants/assets.dart';
 import '../../theme/config.dart';
 
 class Schedules extends StatefulWidget {
@@ -28,10 +29,9 @@ class _SchedulesState extends State<Schedules> {
         actions: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                       radius: 20,
-                      backgroundImage: NetworkImage(
-                          'https://i.pinimg.com/736x/0d/cf/b5/0dcfb548989afdf22afff75e2a46a508.jpg'),
+                      backgroundImage: AssetImage(logo),
                     ),
                   )
         ],
@@ -46,7 +46,12 @@ class _SchedulesState extends State<Schedules> {
                   padding: EdgeInsets.all(8),
                   children: List.generate(
                       controller.schedulesList.length,
-                          (index) => ScheduleItem(scheduleModel: controller.schedulesList[index],)),
+                          (index) {
+                        if(DateTime.now().isAfter(DateTime.parse(getDateFormatted(controller.schedulesList[index].date!)+' 00:00:00')))
+                           return SizedBox();
+
+                        return ScheduleItem(scheduleModel: controller.schedulesList[index],);
+                          }),
                 ):Center(child: Text('There are No Schedules For You'),);
               },
             ),
@@ -54,5 +59,27 @@ class _SchedulesState extends State<Schedules> {
         ],
       ),
     );
+  }
+  
+  String getDateFormatted(String date)
+  {
+    String currentDate = date;
+    String formattedDate = '';
+    
+    formattedDate += currentDate.split('-').first;
+    
+    if(currentDate.split('-')[1].length<2)
+      {
+        formattedDate+='0'+currentDate.split('-')[1];
+      }else
+      formattedDate+=currentDate.split('-')[1];
+
+    if(currentDate.split('-').last.length<2)
+    {
+      formattedDate+='0'+currentDate.split('-').last;
+    }else
+      formattedDate+=currentDate.split('-').last;
+    
+    return formattedDate;
   }
 }

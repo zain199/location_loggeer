@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:location_logger/controllers/auth_controller.dart';
-import 'package:location_logger/theme/color.dart';
-import 'package:location_logger/widget/mytext.dart';
+import 'package:Dohatana/controllers/auth_controller.dart';
+import 'package:Dohatana/theme/color.dart';
+import 'package:Dohatana/widget/mytext.dart';
 
 import '../../Theme/config.dart';
+import '../../common/constants/assets.dart';
 import '../../utils/validators.dart';
 import '../../widget/customTextField.dart';
 import '../home/home_page.dart';
@@ -51,11 +52,7 @@ class _LoginState extends State<Login> {
               height: Get.height - 120,
               child: Column(
                 children: [
-                  Image.network(
-                    'https://i.pinimg.com/736x/0d/cf/b5/0dcfb548989afdf22afff75e2a46a508.jpg',
-                    width: 150,
-                    height: 200,
-                  ),
+                  Image.asset(logo , height: 200 , width: 120,),
                   SizedBox(
                     height: size.height * 0.02,
                   ),

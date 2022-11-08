@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:location_logger/theme/color.dart';
+import 'package:Dohatana/theme/color.dart';
 
 import 'config.dart';
 

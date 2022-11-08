@@ -5,18 +5,19 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
-import 'package:location_logger/common/constants/variables-methods.dart';
-import 'package:location_logger/models/user_model.dart';
-import 'package:location_logger/pages/login/login_screen.dart';
-import 'package:location_logger/utils/constant.dart';
-import 'package:location_logger/widget/show_loading.dart';
+import 'package:Dohatana/common/constants/variables-methods.dart';
+import 'package:Dohatana/models/user_model.dart';
+import 'package:Dohatana/pages/login/login_screen.dart';
+import 'package:Dohatana/utils/constant.dart';
+import 'package:Dohatana/widget/show_loading.dart';
 
 import '../common/constants/end_points.dart';
 import '../common/helpers/get_connect_helper.dart';
 import '../models/schedule_model.dart';
 
 class SchedulesController extends GetxController {
-  List<ScheduleModel> schedulesList = [];
+  List<ScheduleModel> schedulesList = [
+   ];
 
   Future<bool> getUserSchedules() async {
     try {
@@ -53,7 +54,6 @@ class SchedulesController extends GetxController {
 
   Future<bool> checkIn({required String date}) async {
     try {
-
       showLoading(msg: 'Loading...');
       LocationData currentLocation = await getMyLocation();
       Response res = await GetConnectHelper.getData(path: attend, query: {
@@ -61,15 +61,15 @@ class SchedulesController extends GetxController {
         'longitude': currentLocation.longitude.toString(),
         'latitude': currentLocation.latitude.toString(),
         'date': date,
-        'time':DateFormat('hh:mm').format(DateTime.now()),
+        'time': DateFormat('hh:mm').format(DateTime.now()),
         'type': '1',
       });
-       hideLoading();
+      hideLoading();
       debugMessage(res.statusCode.toString());
       if (res.statusCode == 200) {
         showSuccessToast('You Checked In Successfully');
         return true;
-        }
+      }
 
 
       return false;
@@ -91,7 +91,7 @@ class SchedulesController extends GetxController {
         'longitude': currentLocation.longitude.toString(),
         'latitude': currentLocation.latitude.toString(),
         'date': date,
-        'time':DateFormat('hh:mm').format(DateTime.now()),
+        'time': DateFormat('hh:mm').format(DateTime.now()),
         'type': '2',
       });
 

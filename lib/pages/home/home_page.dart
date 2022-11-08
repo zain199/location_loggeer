@@ -1,6 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:location_logger/theme/config.dart';
+import 'package:Dohatana/theme/config.dart';
 import '../accomudations/accomudations.dart';
 import '../schedules/schedules.dart';
 import 'component/profile_page.dart';

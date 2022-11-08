@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:location_logger/utils/constant.dart';
+import 'package:Dohatana/utils/constant.dart';
 
 
 //genrate a complex random number

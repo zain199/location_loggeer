@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:location_logger/theme/color.dart';
-import 'package:location_logger/theme/config.dart';
+import 'package:Dohatana/theme/color.dart';
+import 'package:Dohatana/theme/config.dart';
 
 import 'package:velocity_x/velocity_x.dart';
 

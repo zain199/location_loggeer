@@ -1,10 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:location_logger/controllers/accommodation_controller.dart';
-import 'package:location_logger/controllers/auth_controller.dart';
-import 'package:location_logger/models/accommodation_model.dart';
+import 'package:Dohatana/controllers/accommodation_controller.dart';
+import 'package:Dohatana/controllers/auth_controller.dart';
 
 import '../../Theme/config.dart';
 

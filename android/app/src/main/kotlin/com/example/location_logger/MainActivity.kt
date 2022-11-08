@@ -1,4 +1,4 @@
-package com.example.location_logger
+package com.dohatana.app
 
 import io.flutter.embedding.android.FlutterActivity
 
