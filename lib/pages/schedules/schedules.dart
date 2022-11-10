@@ -47,7 +47,7 @@ class _SchedulesState extends State<Schedules> {
                   children: List.generate(
                       controller.schedulesList.length,
                           (index) {
-                        if(DateTime.now().isAfter(DateTime.parse(getDateFormatted(controller.schedulesList[index].date!)+' 00:00:00')))
+                        if(DateTime.now().isAfter(DateTime.parse(getDateFormatted(controller.schedulesList[index].date!)+' 23:59:59')))
                            return SizedBox();
 
                         return ScheduleItem(scheduleModel: controller.schedulesList[index],);

@@ -3,6 +3,7 @@ const String loginEndPoint = '/login';
 const String accommodation ='/accommodation/1';
 const String schedules ='/schedule/1';
 const String attend ='/attendanceSave';
+const String deleteAccount ='/delete/';
 
 
 

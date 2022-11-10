@@ -105,7 +105,9 @@ class Profile extends StatelessWidget {
                     MenuItem2(
                       title: "Delete Account",
                       describtion: 'Delete Your Account Will Remove All Your Data',
-                      onPressed: (){},
+                      onPressed: () async {
+                        await controller.deleteUserAccount();
+                      },
                       ic: Icons.delete,
                     ),
 

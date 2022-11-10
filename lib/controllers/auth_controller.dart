@@ -101,12 +101,36 @@ class AuthController extends GetxController {
 
       currentUser = null;
       await GetStorage().remove('user');
-      update();
       Get.offAll(Login());
+      update();
     } catch (error) {
       showErrorToast(error.toString());
       debugMessage(error.toString());
 
+    }
+  }
+
+  Future deleteUserAccount() async {
+    try {
+      showLoading(msg: 'Deleting...');
+      Response res = await GetConnectHelper.getData(
+          path: deleteAccount+currentUser!.userId!);
+      hideLoading();
+      debugMessage(res.statusCode.toString());
+      if (res.statusCode == 200) {
+        debugMessage(res.body.toString());
+        showSuccessToast('Your Account Deleted Successfully');
+        await logout();
+        return true;
+
+      }
+      return false;
+
+    } catch (error) {
+      hideLoading();
+      showErrorToast(error.toString());
+      debugMessage(error.toString());
+      return false;
     }
   }
 
