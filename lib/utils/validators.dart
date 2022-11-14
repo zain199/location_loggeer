@@ -31,7 +31,7 @@ class Validators {
   }
 
   static String? validateEmail(String? v) {
-    return !v!.contains(regExpEmail) ? 'برجاء ادخال بريد الكتروني صحيح' : null;
+    return !v!.contains(regExpEmail) ? 'Please enter correct email' : null;
   }
 
   static String? validateYear(String? v) {
@@ -45,7 +45,7 @@ class Validators {
   }
 
   static String? validatePhone(String? v) {
-    return !v!.contains(regExpPhone) ? 'برجاء ادخال رقم الهاتف بشكل صحيح' : null;
+    return !v!.contains(regExpPhone) ? 'Please enter correct phone' : null;
   }
 
   static String? validatePw(String? v) {

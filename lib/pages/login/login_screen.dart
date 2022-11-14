@@ -1,3 +1,4 @@
+import 'package:Dohatana/pages/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:Dohatana/controllers/auth_controller.dart';
@@ -133,6 +134,30 @@ class _LoginState extends State<Login> {
                           ),
                         );
                       },
+                    ),
+                  ),
+                  SizedBox(
+                    height: size.height * 0.03,
+                  ),
+                  SizedBox(
+                    height: 60,
+                    width: double.maxFinite,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                              Get.to(RegisterScreen());
+                      },
+
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        backgroundColor: Config().appColor,
+                      ),
+                      child: Text(
+                        "Register",
+                        style: Get.theme.textTheme.subtitle1!
+                            .copyWith(color: white, fontSize: 20),
+                      ),
                     ),
                   ),
                   SizedBox(

@@ -46,15 +46,41 @@ android {
         applicationId "com.dohatana.app"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
+        versionCode 3
         versionName flutterVersionName
     }
 
+    signingConfigs
+            {
+                release {
+                    storeFile file('dohatana.jks')
+                    storePassword '123456'
+                    keyAlias 'dohatana'
+                    keyPassword '123456'
+                }
+
+                debug {
+                    storeFile file('dohatana.jks')
+                    storePassword '123456'
+                    keyAlias 'dohatana'
+                    keyPassword '123456'
+                }
+
+
+            }
+
     buildTypes {
+        debug
+                {
+                    signingConfig signingConfigs.debug
+                }
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
 }
